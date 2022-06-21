@@ -10,7 +10,7 @@ const transition = (delay) => ({
 
 function About() {
 	return (
-		<HStack className="about" minH="100vh">
+		<HStack as="section" className="about" minH="100vh">
 			<Box flex="1">
 				<SlideFade offsetY="10px" transition={transition(0.1)} whileInView="enter">
 					<Text as="div">
