@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Patrick+Hand+SC&display=swap');
 
+@font-face {
+	font-family: signature;
+	src: url('../static/fonts/Photographer_Script.ttf');
+}
+
 .about .lottie-student {
 	width: 100%;
 	height: 100%;

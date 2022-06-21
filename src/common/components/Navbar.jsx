@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, HStack, Link, useColorMode } from '@chakra-ui/react';
+import { Button, Heading, HStack, Link, useColorMode } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 
 function Navbar() {
@@ -7,7 +7,7 @@ function Navbar() {
 
 	return (
 		<HStack justify="space-between">
-			<Box>logo</Box>
+			<Heading fontFamily="signature" fontWeight="light">{`<Adarsh Shah />`}</Heading>
 
 			<HStack>
 				<Link>About</Link>
