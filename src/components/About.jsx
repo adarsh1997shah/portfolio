@@ -1,12 +1,14 @@
 import React from 'react';
 import Lottie from 'react-lottie-player';
 import { Box, Heading, HStack, SlideFade, Text } from '@chakra-ui/react';
+import { totalLinkDelay } from '../common/components/Navbar';
+import { transitionWithDelay } from '../utils/transition';
 
 import student from '../static/lottie/76212-student-transparent.json';
 
-const transition = (delay) => ({
-	enter: { duration: 0.5, ease: 'linear', delay },
-});
+const transition = (delay) => {
+	return transitionWithDelay(delay, totalLinkDelay);
+};
 
 function About() {
 	return (
