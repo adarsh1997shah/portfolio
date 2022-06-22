@@ -20,14 +20,14 @@ function About() {
 								as="span"
 								fontSize={{ base: '4xl', md: '6xl' }}
 								display="block"
-								color="#1363DF">
+								color="green.500">
 								Adarsh Shah.
 							</Text>
 						</SlideFade>
 					</Text>
 				</SlideFade>
 				<SlideFade offsetY="10px" transition={transition(0.3)} whileInView="enter">
-					<Heading my="4" fontSize={{ base: '4xl', md: '6xl' }} color="#47B5FF">
+					<Heading my="4" fontSize={{ base: '4xl', md: '6xl' }} color="green.300">
 						I build/break things on internet.
 					</Heading>
 				</SlideFade>

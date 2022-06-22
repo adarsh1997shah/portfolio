@@ -1,7 +1,8 @@
 const semanticTokensStyle = {
 	colors: {
-		'chakra-body-bg': {
-			_light: '#EFFFFD',
+		'chakra-nav-link': {
+			default: 'green.700',
+			_dark: 'green.200',
 		},
 	},
 };
