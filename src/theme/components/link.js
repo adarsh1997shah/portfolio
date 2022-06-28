@@ -14,7 +14,7 @@ const linkStyles = {
 				width: '100%',
 				transform: 'scaleX(0)',
 				height: '2px',
-				bottom: '0',
+				bottom: '-4px',
 				left: '0',
 				backgroundColor: 'green.300',
 				transformOrigin: 'bottom right',

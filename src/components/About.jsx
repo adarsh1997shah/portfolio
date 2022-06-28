@@ -7,12 +7,12 @@ import { transitionWithDelay } from '../utils/transition';
 import student from '../static/lottie/76212-student-transparent.json';
 
 const transition = (delay) => {
-	return transitionWithDelay(delay, totalLinkDelay);
+	return transitionWithDelay({ delay, constDelay: totalLinkDelay });
 };
 
 function About() {
 	return (
-		<HStack as="section" className="about" minH="100vh">
+		<HStack as="section" className="about" minH="calc(100vh - 80px)">
 			<Box flex="1">
 				<SlideFade offsetY="10px" transition={transition(0.1)} whileInView="enter">
 					<Text as="div">

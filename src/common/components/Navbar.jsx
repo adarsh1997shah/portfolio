@@ -21,7 +21,7 @@ import {
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon, HamburgerIcon, ChatIcon } from '@chakra-ui/icons';
 import { FaDesktop, FaGithub, FaLinkedin, FaInstagram, FaTwitter } from 'react-icons/fa';
-import { transitionWithDelay } from '../../utils/transition';
+import { transitionDuration, transitionWithDelay } from '../../utils/transition';
 
 const navLinks = [
 	{ name: 'Projects', url: '#projects', icon: FaDesktop },
@@ -35,39 +35,52 @@ const socialLinks = [
 	{ name: 'Instagram', icon: FaInstagram },
 ];
 
-const linkDelay = 0.1;
+const linkDelay = 0.3;
 export const totalLinkDelay = linkDelay * navLinks.length;
 
 function Links({ onClose, isMobile }) {
-	return navLinks.map(({ name, url, icon: LinkIcon }, index) => (
-		<SlideFade
-			key={url}
-			offsetY="5px"
-			transition={transitionWithDelay(index * linkDelay)}
-			whileInView="enter">
-			<Link
-				href={url}
-				variant={isMobile ? '' : 'nav'}
-				color="chakra-nav-link"
-				onClick={onClose}>
-				<Icon as={LinkIcon} verticalAlign="middle" mr={{ base: '2', md: '1' }} /> {name}
-			</Link>
-		</SlideFade>
-	));
+	const duration = isMobile ? 0 : transitionDuration;
+
+	return navLinks.map(({ name, url, icon: LinkIcon }, index) => {
+		const transitionDelay = isMobile ? 0 : index * linkDelay;
+		return (
+			<SlideFade
+				key={url}
+				offsetY="-10px"
+				transition={transitionWithDelay({ delay: transitionDelay, duration })}
+				whileInView="enter"
+				viewport={{ once: true }}>
+				<Link
+					href={url}
+					variant={isMobile ? '' : 'nav'}
+					color="chakra-nav-link"
+					onClick={onClose}>
+					<Icon as={LinkIcon} verticalAlign="middle" mr={{ base: '2', md: '1' }} /> {name}
+				</Link>
+			</SlideFade>
+		);
+	});
 }
 
-function SocialLinks({ onClose }) {
-	return socialLinks.map(({ name, url, icon: LinkIcon }, index) => (
-		<SlideFade
-			key={name}
-			offsetY="5px"
-			transition={transitionWithDelay(index * linkDelay + totalLinkDelay)}
-			whileInView="enter">
-			<Link href={url} color="chakra-nav-link" onClick={onClose}>
-				<Icon as={LinkIcon} verticalAlign="middle" mr={{ base: '2', md: '1' }} /> {name}
-			</Link>
-		</SlideFade>
-	));
+function SocialLinks({ onClose, isMobile }) {
+	const duration = isMobile ? 0 : transitionDuration;
+
+	return socialLinks.map(({ name, url, icon: LinkIcon }, index) => {
+		const transitionDelay = isMobile ? 0 : index * linkDelay + totalLinkDelay;
+
+		return (
+			<SlideFade
+				key={name}
+				offsetY="-10px"
+				transition={transitionWithDelay({ delay: transitionDelay, duration })}
+				whileInView="enter"
+				viewport={{ once: true }}>
+				<Link href={url} color="chakra-nav-link" onClick={onClose}>
+					<Icon as={LinkIcon} verticalAlign="middle" mr={{ base: '2', md: '1' }} /> {name}
+				</Link>
+			</SlideFade>
+		);
+	});
 }
 
 function Navbar() {
@@ -85,13 +98,8 @@ function Navbar() {
 	}, [isMobile, onClose]);
 
 	return (
-		<HStack as="nav" justify="space-between" pt="4" fontSize="lg">
-			<SlideFade
-				offsetY="5px"
-				transition={{
-					enter: { duration: 0.5, ease: 'linear', delay: linkDelay },
-				}}
-				whileInView="enter">
+		<HStack as="nav" justify="space-between" pt="4" fontSize="lg" height="20">
+			<SlideFade offsetY="-10px" transition={transitionWithDelay()} whileInView="enter">
 				<Heading
 					fontFamily="signature"
 					fontWeight="light"
@@ -105,14 +113,30 @@ function Navbar() {
 					<Links />
 				</HStack>
 
-				<Button variant="link" onClick={toggleColorMode}>
-					{colorMode === 'light' ? <SunIcon boxSize="5" /> : <MoonIcon boxSize="5" />}
-				</Button>
+				<SlideFade
+					offsetY="-10px"
+					transition={transitionWithDelay({
+						delay: isMobile ? 0.2 : totalLinkDelay,
+					})}
+					whileInView="enter"
+					viewport={{ once: true }}>
+					<Button variant="link" onClick={toggleColorMode} verticalAlign="middle">
+						{colorMode === 'light' ? <SunIcon boxSize="5" /> : <MoonIcon boxSize="5" />}
+					</Button>
+				</SlideFade>
 
 				<HStack display={{ md: 'none' }}>
-					<Button ref={btnRef} variant="link" onClick={onOpen} display="block">
-						<HamburgerIcon boxSize="5" />
-					</Button>
+					<SlideFade
+						offsetY="-10px"
+						transition={transitionWithDelay({
+							delay: 0.4,
+						})}
+						whileInView="enter"
+						viewport={{ once: true }}>
+						<Button ref={btnRef} variant="link" onClick={onOpen} verticalAlign="middle">
+							<HamburgerIcon boxSize="5" />
+						</Button>
+					</SlideFade>
 
 					{isMobile && (
 						<Drawer
@@ -132,7 +156,7 @@ function Navbar() {
 
 									<Stack mt="22">
 										<Divider borderColor="green.400" />
-										<SocialLinks onClose={onClose} />
+										<SocialLinks onClose={onClose} isMobile={isMobile} />
 									</Stack>
 								</DrawerBody>
 							</DrawerContent>
