@@ -24,6 +24,17 @@ const linkStyles = {
 				_after: { transform: `scaleX(1)`, transformOrigin: `bottom left` },
 			},
 		},
+		outline: {
+			border: '1.5px solid',
+			borderColor: 'green.300',
+			borderRadius: 'sm',
+			padding: '2.5',
+			display: 'inline-block',
+			_hover: {
+				backgroundColor: 'green.300',
+				color: 'whiteAlpha.900',
+			},
+		},
 	},
 };
 

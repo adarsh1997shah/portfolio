@@ -99,7 +99,11 @@ function Navbar() {
 
 	return (
 		<HStack as="nav" justify="space-between" pt="4" fontSize="lg" height="20">
-			<SlideFade offsetY="-10px" transition={transitionWithDelay()} whileInView="enter">
+			<SlideFade
+				offsetY="-10px"
+				transition={transitionWithDelay()}
+				whileInView="enter"
+				viewport={{ once: true }}>
 				<Heading
 					fontFamily="signature"
 					fontWeight="light"
