@@ -5,6 +5,10 @@
 	src: url('../static/fonts/Photographer_Script.ttf');
 }
 
+:root {
+	--navBarHeight: 80px;
+}
+
 .about .lottie-student {
 	width: 100%;
 	height: 100%;
@@ -18,6 +22,7 @@
 
 .nav.nav-scroll-up {
 	box-shadow: rgb(2 12 27 / 70%) 0px 10px 30px -10px;
+	height: var(--navBarHeight);
 }
 
 .nav.nav-scroll-down {
@@ -25,5 +30,5 @@
 }
 
 .nav.nav-height-dec {
-	height: 70px;
+	height: var(--navBarHeight);
 }

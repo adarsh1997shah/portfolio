@@ -30,8 +30,8 @@ const navLinks = [
 	{ name: 'Contact', url: '#contact', icon: ChatIcon },
 ];
 
-const socialLinks = [
-	{ name: 'GitHub', icon: FaGithub },
+export const socialLinks = [
+	{ name: 'GitHub', icon: FaGithub, url: 'https://github.com/adarsh1997shah' },
 	{ name: 'LinkedIn', icon: FaLinkedin },
 	{ name: 'Twitter', icon: FaTwitter },
 	{ name: 'Instagram', icon: FaInstagram },
@@ -40,7 +40,7 @@ const socialLinks = [
 const linkDelay = 0.3;
 export const totalLinkDelay = linkDelay * navLinks.length;
 
-function Links({ onClose, isMobile }) {
+function Links({ onClose = () => {}, isMobile = false }) {
 	const duration = isMobile ? 0 : transitionDuration;
 
 	return navLinks.map(({ name, url, icon: LinkIcon }, index) => {
@@ -78,7 +78,7 @@ function SocialLinks({ onClose, isMobile }) {
 				whileInView="enter"
 				viewport={{ once: true }}>
 				<Link href={url} color="chakra-nav-link" onClick={onClose}>
-					<Icon as={LinkIcon} verticalAlign="middle" mr={{ base: '2', md: '1' }} /> {name}
+					<Icon as={LinkIcon} verticalAlign="middle" mr="2" /> {isMobile && name}
 				</Link>
 			</SlideFade>
 		);
@@ -133,7 +133,7 @@ function Navbar() {
 			as="nav"
 			className={classList(['nav', showNavbarOnScroll])}
 			fontSize="lg"
-			height="20"
+			height="24"
 			position="fixed"
 			left="0"
 			right="0"
@@ -183,6 +183,7 @@ function Navbar() {
 							</Button>
 						</SlideFade>
 
+						{/* Styles for mobile */}
 						{isMobile && (
 							<Drawer
 								isOpen={isOpen}

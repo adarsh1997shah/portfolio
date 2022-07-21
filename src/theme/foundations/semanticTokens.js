@@ -8,6 +8,10 @@ const semanticTokensStyle = {
 			default: 'whiteAlpha.800',
 			_dark: 'gray.800',
 		},
+		'chakra-footer-bg': {
+			default: 'blackAlpha.100',
+			_dark: 'gray.700',
+		},
 	},
 };
 
