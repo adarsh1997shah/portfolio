@@ -9,3 +9,21 @@
 	width: 100%;
 	height: 100%;
 }
+
+.nav {
+	transform: translate(0px);
+	transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+	backdrop-filter: blur(5px);
+}
+
+.nav.nav-scroll-up {
+	box-shadow: rgb(2 12 27 / 70%) 0px 10px 30px -10px;
+}
+
+.nav.nav-scroll-down {
+	transform: translateY(-80px);
+}
+
+.nav.nav-height-dec {
+	height: 70px;
+}

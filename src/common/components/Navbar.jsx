@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
 	Button,
 	Heading,
@@ -18,10 +18,12 @@ import {
 	Icon,
 	Divider,
 	SlideFade,
+	Container,
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon, HamburgerIcon, ChatIcon } from '@chakra-ui/icons';
 import { FaDesktop, FaGithub, FaLinkedin, FaInstagram, FaTwitter } from 'react-icons/fa';
 import { transitionDuration, transitionWithDelay } from '../../utils/transition';
+import { classList } from '../../utils';
 
 const navLinks = [
 	{ name: 'Projects', url: '#projects', icon: FaDesktop },
@@ -84,7 +86,10 @@ function SocialLinks({ onClose, isMobile }) {
 }
 
 function Navbar() {
+	const [showNavbarOnScroll, setShowNavbarOnScroll] = useState(false);
+
 	const btnRef = React.useRef();
+	const lastScroll = useRef(0);
 
 	const { toggleColorMode, colorMode } = useColorMode();
 	const { breakpoints } = useTheme();
@@ -97,77 +102,114 @@ function Navbar() {
 		}
 	}, [isMobile, onClose]);
 
+	const showNavbar = () => {
+		if (window.scrollY > 100) {
+			if (window.scrollY < lastScroll.current) {
+				setShowNavbarOnScroll('nav-scroll-up');
+			} else {
+				setShowNavbarOnScroll('nav-scroll-down');
+			}
+		} else {
+			if (window.scrollY > 0 && window.scrollY < 100) {
+				setShowNavbarOnScroll('nav-height-dec');
+			} else {
+				setShowNavbarOnScroll('');
+			}
+		}
+
+		lastScroll.current = window.scrollY;
+	};
+
+	useEffect(() => {
+		window.addEventListener('scroll', showNavbar);
+
+		return () => {
+			window.removeEventListener('scroll', showNavbar);
+		};
+	}, []);
+
 	return (
-		<HStack as="nav" justify="space-between" pt="4" fontSize="lg" height="20">
-			<SlideFade
-				offsetY="-10px"
-				transition={transitionWithDelay()}
-				whileInView="enter"
-				viewport={{ once: true }}>
-				<Heading
-					fontFamily="signature"
-					fontWeight="light"
-					fontSize={{ base: '4xl', md: '5xl' }}>
-					{`<Adarsh Shah />`}
-				</Heading>
-			</SlideFade>
-
-			<HStack>
-				<HStack spacing="5" display={{ base: 'none', md: 'flex' }}>
-					<Links />
-				</HStack>
-
+		<HStack
+			as="nav"
+			className={classList(['nav', showNavbarOnScroll])}
+			fontSize="lg"
+			height="20"
+			position="fixed"
+			left="0"
+			right="0"
+			zIndex="banner"
+			backgroundColor="chakra-nav-bg">
+			<Container display="flex" justifyContent="space-between" alignItems="center">
 				<SlideFade
 					offsetY="-10px"
-					transition={transitionWithDelay({
-						delay: isMobile ? 0.2 : totalLinkDelay,
-					})}
+					transition={transitionWithDelay()}
 					whileInView="enter"
 					viewport={{ once: true }}>
-					<Button variant="link" onClick={toggleColorMode} verticalAlign="middle">
-						{colorMode === 'light' ? <SunIcon boxSize="5" /> : <MoonIcon boxSize="5" />}
-					</Button>
+					<Heading
+						fontFamily="signature"
+						fontWeight="light"
+						fontSize={{ base: '4xl', md: '5xl' }}>
+						{`<Adarsh Shah />`}
+					</Heading>
 				</SlideFade>
 
-				<HStack display={{ md: 'none' }}>
+				<HStack>
+					<HStack spacing="5" display={{ base: 'none', md: 'flex' }}>
+						<Links />
+					</HStack>
+
 					<SlideFade
 						offsetY="-10px"
 						transition={transitionWithDelay({
-							delay: 0.4,
+							delay: isMobile ? 0.2 : totalLinkDelay,
 						})}
 						whileInView="enter"
 						viewport={{ once: true }}>
-						<Button ref={btnRef} variant="link" onClick={onOpen} verticalAlign="middle">
-							<HamburgerIcon boxSize="5" />
+						<Button variant="link" onClick={toggleColorMode} verticalAlign="middle">
+							{colorMode === 'light' ? <SunIcon boxSize="5" /> : <MoonIcon boxSize="5" />}
 						</Button>
 					</SlideFade>
 
-					{isMobile && (
-						<Drawer
-							isOpen={isOpen}
-							placement="right"
-							onClose={onClose}
-							finalFocusRef={btnRef}>
-							<DrawerOverlay />
-							<DrawerContent>
-								<DrawerCloseButton />
-								<DrawerHeader />
+					<HStack display={{ md: 'none' }}>
+						<SlideFade
+							offsetY="-10px"
+							transition={transitionWithDelay({
+								delay: 0.4,
+							})}
+							whileInView="enter"
+							viewport={{ once: true }}>
+							<Button ref={btnRef} variant="link" onClick={onOpen} verticalAlign="middle">
+								<HamburgerIcon boxSize="5" />
+							</Button>
+						</SlideFade>
 
-								<DrawerBody fontSize="xl">
-									<Stack pt="8">
-										<Links onClose={onClose} isMobile={isMobile} />
-									</Stack>
+						{isMobile && (
+							<Drawer
+								isOpen={isOpen}
+								placement="right"
+								onClose={onClose}
+								finalFocusRef={btnRef}>
+								<DrawerOverlay />
+								<DrawerContent>
+									<DrawerCloseButton />
+									<DrawerHeader />
 
-									<Stack mt="22">
-										<Divider borderColor="green.400" />
-										<SocialLinks onClose={onClose} isMobile={isMobile} />
-									</Stack>
-								</DrawerBody>
-							</DrawerContent>
-						</Drawer>
-					)}
+									<DrawerBody fontSize="xl">
+										<Stack pt="8">
+											<Links onClose={onClose} isMobile={isMobile} />
+										</Stack>
+
+										<Stack mt="22">
+											<Divider borderColor="green.400" />
+											<SocialLinks onClose={onClose} isMobile={isMobile} />
+										</Stack>
+									</DrawerBody>
+								</DrawerContent>
+							</Drawer>
+						)}
+					</HStack>
 				</HStack>
-			</HStack>
+			</Container>
 		</HStack>
 	);
 }

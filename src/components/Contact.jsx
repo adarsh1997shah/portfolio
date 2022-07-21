@@ -7,7 +7,7 @@ import watchMovieWithPopcorn from '../static/lottie/watch-a-movie-with-popcorn.j
 
 export default function Contact() {
 	return (
-		<HStack flexDirection="row-reverse" mb="16">
+		<HStack as="section" className="contact" flexDirection="row-reverse" mb="16">
 			<Box flex="1">
 				<SlideFade
 					offsetY="30px"
