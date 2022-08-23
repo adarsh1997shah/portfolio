@@ -41,7 +41,7 @@ function About() {
 					transition={transition(0.3)}
 					whileInView="enter"
 					viewport={{ once: true }}>
-					<Heading mb="4" fontSize={{ base: '4xl', md: '6xl' }} color="green.300">
+					<Heading mb="4" size="2xl" color="green.300">
 						I build/break things on internet.
 					</Heading>
 				</SlideFade>

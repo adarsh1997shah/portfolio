@@ -13,7 +13,7 @@ function App() {
 			<Container mb="16">
 				<Box className="content">
 					<About />
-					{/* <Projects /> */}
+					<Projects />
 					<Contact />
 				</Box>
 			</Container>

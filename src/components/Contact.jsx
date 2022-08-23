@@ -17,7 +17,7 @@ export default function Contact() {
 					})}
 					whileInView="enter"
 					viewport={{ once: true }}>
-					<Heading fontSize="5xl" color="green.300" variant="section">
+					<Heading size="2xl" color="green.300" variant="section">
 						Contact
 					</Heading>
 					<Text my="5">
