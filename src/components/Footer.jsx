@@ -8,7 +8,7 @@ function Footer() {
 			<Container py="6">
 				<Flex
 					display="flex"
-					justifyContent="space-between"
+					justifyContent={{ base: 'center', md: 'space-between' }}
 					w="100%"
 					flexWrap="wrap"
 					gap="2">

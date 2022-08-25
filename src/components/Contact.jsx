@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Box, Heading, HStack, Link, SlideFade, Text } from '@chakra-ui/react';
 import Lottie from 'react-lottie-player';
 import { easeInOut, transitionWithDelay } from '../utils/transition';
 
 import watchMovieWithPopcorn from '../static/lottie/watch-a-movie-with-popcorn.json';
+import useOnScreen from '../common/hooks/useOnScreen';
+import COLOR from '../common/constants/colors';
 
 export default function Contact() {
+	const lottieRef = useRef(null);
+
+	const isLottieVisible = useOnScreen(lottieRef);
+
 	return (
 		<HStack as="section" className="contact" flexDirection="row-reverse">
 			<Box flex="1">
@@ -17,7 +23,7 @@ export default function Contact() {
 					})}
 					whileInView="enter"
 					viewport={{ once: true }}>
-					<Heading size="2xl" color="green.300" variant="section">
+					<Heading size="2xl" color={COLOR.subHeading} variant="section">
 						Contact
 					</Heading>
 					<Text my="5">
@@ -29,7 +35,7 @@ export default function Contact() {
 				</SlideFade>
 			</Box>
 
-			<Box flex="1" display={{ base: 'none', md: 'block' }}>
+			<Box flex="1" display={{ base: 'none', md: 'block' }} ref={lottieRef}>
 				<SlideFade
 					offsetY="30px"
 					transition={transitionWithDelay({
@@ -42,7 +48,7 @@ export default function Contact() {
 						className="lottie-student"
 						loop
 						animationData={watchMovieWithPopcorn}
-						play
+						play={isLottieVisible}
 					/>
 				</SlideFade>
 			</Box>

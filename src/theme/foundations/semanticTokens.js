@@ -12,6 +12,10 @@ const semanticTokensStyle = {
 			default: 'blackAlpha.100',
 			_dark: 'gray.700',
 		},
+		'chakra-project-text-bg': {
+			default: 'green.100',
+			_dark: 'gray.700',
+		},
 	},
 };
 
