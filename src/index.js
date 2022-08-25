@@ -3,15 +3,27 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import theme from './theme';
 
 import './theme/styles.css';
+
+// Create a client
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			staleTime: 1000 * 20,
+		},
+	},
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<React.StrictMode>
 		<ChakraProvider theme={theme}>
-			<App />
+			<QueryClientProvider client={queryClient}>
+				<App />
+			</QueryClientProvider>
 		</ChakraProvider>
 	</React.StrictMode>
 );

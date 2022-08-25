@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
 	Box,
 	Heading,
@@ -10,18 +10,10 @@ import {
 	Text,
 } from '@chakra-ui/react';
 import COLOR from '../../common/constants/colors';
-
-const projectsUrl = [
-	'https://api.github.com/repos/adarsh1997shah/box-office',
-	'https://api.github.com/repos/adarsh1997shah/Catch-Of-The-Day',
-	'https://api.github.com/repos/adarsh1997shah/e-shop',
-	'https://api.github.com/repos/adarsh1997shah/Image_Carousal',
-];
+import { useProjects } from './query';
 
 function Projects() {
-	const [projects, setProjects] = useState([]);
-
-	useEffect(() => {}, []);
+	const projects = useProjects();
 
 	return (
 		<Stack as="section" className="projects" flexDirection="column" mb="16" gap="5">
