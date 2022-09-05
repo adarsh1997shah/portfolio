@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Box, Heading, HStack, Link, SlideFade, Text } from '@chakra-ui/react';
+import { Box, Heading, Link, SlideFade, Stack, Text } from '@chakra-ui/react';
 import Lottie from 'react-lottie-player';
 import { easeInOut, transitionWithDelay } from '../utils/transition';
 
@@ -13,45 +13,52 @@ export default function Contact() {
 	const isLottieVisible = useOnScreen(lottieRef);
 
 	return (
-		<HStack as="section" className="contact" flexDirection="row-reverse">
-			<Box flex="1">
-				<SlideFade
-					offsetY="30px"
-					transition={transitionWithDelay({
-						ease: easeInOut,
-						delay: 0.3,
-					})}
-					whileInView="enter"
-					viewport={{ once: true }}>
-					<Heading size="2xl" color={COLOR.subHeading} variant="section">
-						Contact
-					</Heading>
-					<Text my="5">
-						I'm always interested in hearing about new technology, my inbox is always
-						open. Whether for a potential project or just to say hi, I'll try my best to
-						answer your email.
-					</Text>
-					<Link variant="outline">Get in touch</Link>
-				</SlideFade>
-			</Box>
+		<Stack as="section" className="contact" gap={{ base: '3', md: '5' }} mb="24">
+			<Heading size="2xl" color={COLOR.subHeading} variant="section">
+				Contact
+			</Heading>
 
-			<Box flex="1" display={{ base: 'none', md: 'block' }} ref={lottieRef}>
-				<SlideFade
-					offsetY="30px"
-					transition={transitionWithDelay({
-						ease: easeInOut,
-						delay: 0.3,
-					})}
-					whileInView="enter"
-					viewport={{ once: true }}>
-					<Lottie
-						className="lottie-student"
-						loop
-						animationData={watchMovieWithPopcorn}
-						play={isLottieVisible}
-					/>
-				</SlideFade>
-			</Box>
-		</HStack>
+			<Stack flexDirection="row">
+				<Box flex="1">
+					<SlideFade
+						offsetY="30px"
+						transition={transitionWithDelay({
+							ease: easeInOut,
+							delay: 0.3,
+						})}
+						whileInView="enter"
+						viewport={{ once: true }}>
+						<Text mb="5">
+							I'm always interested in hearing about new technology, my inbox is always
+							open. Whether for a potential project or just to say hi, I'll try my best to
+							answer your email.
+						</Text>
+						<Link variant="outline">Get in touch</Link>
+					</SlideFade>
+				</Box>
+
+				<Box
+					flex="1"
+					display={{ base: 'none', md: 'block' }}
+					ref={lottieRef}
+					position="relative">
+					<SlideFade
+						offsetY="30px"
+						transition={transitionWithDelay({
+							ease: easeInOut,
+							delay: 0.3,
+						})}
+						whileInView="enter"
+						viewport={{ once: true }}>
+						<Lottie
+							className="lottie-contact"
+							loop
+							animationData={watchMovieWithPopcorn}
+							play={isLottieVisible}
+						/>
+					</SlideFade>
+				</Box>
+			</Stack>
+		</Stack>
 	);
 }

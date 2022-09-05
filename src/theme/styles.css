@@ -32,3 +32,9 @@
 .nav.nav-height-dec {
 	height: var(--navBarHeight);
 }
+
+.lottie-contact {
+	position: absolute;
+	top: -135px;
+	right: 0;
+}

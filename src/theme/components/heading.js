@@ -2,6 +2,9 @@ const headingStyle = {
 	variants: {
 		section: {
 			overflow: 'hidden',
+			display: 'flex',
+			alignItems: 'center',
+
 			_before: {
 				backgroundColor: 'green.400',
 				content: `''`,
@@ -9,9 +12,8 @@ const headingStyle = {
 				height: '1px',
 				position: 'relative',
 				verticalAlign: 'middle',
-				width: '50%',
+				width: '5%',
 				right: '2',
-				marginLeft: '-45%',
 			},
 			_after: {
 				backgroundColor: 'green.400',
@@ -20,9 +22,8 @@ const headingStyle = {
 				height: '1px',
 				position: 'relative',
 				verticalAlign: 'middle',
-				width: '50%',
+				flex: 1,
 				left: '2',
-				marginRight: '-50%',
 			},
 		},
 	},
