@@ -5,6 +5,8 @@ function useOnScreen(ref, rootMargin = '0px') {
 	const [isIntersecting, setIntersecting] = useState(false);
 
 	useEffect(() => {
+		const currentEl = ref.current;
+
 		const observer = new IntersectionObserver(
 			([entry]) => {
 				// Update our state when observer callback fires
@@ -20,9 +22,9 @@ function useOnScreen(ref, rootMargin = '0px') {
 		}
 
 		return () => {
-			observer.unobserve(ref.current);
+			observer.unobserve(currentEl);
 		};
-	}, []); // Empty array ensures that effect is only run on mount and unmount
+	}, [ref, rootMargin]); // Empty array ensures that effect is only run on mount and unmount
 	return isIntersecting;
 }
 
