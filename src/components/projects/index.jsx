@@ -31,7 +31,7 @@ function Projects() {
 								borderRadius="lg"
 							/>
 						}
-						// display={{ base: 'none', md: 'block' }}
+						display={{ base: 'none', md: 'block' }}
 						borderRadius="lg"
 						gridColumn={{ base: '1/-1', md: '1/6' }}
 						objectFit="cover"
@@ -45,7 +45,7 @@ function Projects() {
 						gridColumn={{ base: '1/-1', md: '5/11' }}
 						gridRow="1/2"
 						zIndex="2"
-						textAlign="right">
+						textAlign={{ base: 'left', md: 'right' }}>
 						<Heading size="md">Latest Project</Heading>
 						<Heading size="lg" color="green.300">
 							Wall of Wonder
@@ -62,7 +62,7 @@ function Projects() {
 							m="0"
 							display="flex"
 							gap="2"
-							justifyContent="flex-end">
+							justifyContent={{ base: 'flex-start', md: 'flex-end' }}>
 							<ListItem>HTML</ListItem>
 							<ListItem>CSS</ListItem>
 							<ListItem>SVG</ListItem>

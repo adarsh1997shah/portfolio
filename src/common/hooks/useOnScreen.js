@@ -14,6 +14,7 @@ function useOnScreen(ref, rootMargin = '0px') {
 			},
 			{
 				rootMargin,
+				threshold: 0.5,
 			}
 		);
 
