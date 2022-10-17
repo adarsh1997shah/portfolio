@@ -1,3 +1,5 @@
+import COLOR from '../../common/constants/colors';
+
 const headingStyle = {
 	variants: {
 		section: {
@@ -6,7 +8,7 @@ const headingStyle = {
 			alignItems: 'center',
 
 			_before: {
-				backgroundColor: 'green.400',
+				backgroundColor: COLOR.subHeading,
 				content: `''`,
 				display: 'inline-block',
 				height: '1px',
@@ -16,7 +18,7 @@ const headingStyle = {
 				right: '2',
 			},
 			_after: {
-				backgroundColor: 'green.400',
+				backgroundColor: COLOR.subHeading,
 				content: `''`,
 				display: 'inline-block',
 				height: '1px',

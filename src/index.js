@@ -2,17 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, createStandaloneToast } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import theme from './theme';
 
 import './theme/styles.css';
+
+export const { ToastContainer, toast } = createStandaloneToast({ theme });
 
 // Create a client
 const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
 			staleTime: 1000 * 20,
+			refetchOnWindowFocus: false,
 		},
 	},
 });
@@ -22,6 +25,7 @@ root.render(
 	<React.StrictMode>
 		<ChakraProvider theme={theme}>
 			<QueryClientProvider client={queryClient}>
+				<ToastContainer />
 				<App />
 			</QueryClientProvider>
 		</ChakraProvider>

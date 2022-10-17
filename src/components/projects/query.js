@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import { getProjects } from './services';
 
-const projectUrls = [
-	'https://api.github.com/repos/adarsh1997shah/box-office',
-	'https://api.github.com/repos/adarsh1997shah/Catch-Of-The-Day',
-	'https://api.github.com/repos/adarsh1997shah/e-shop',
-	'https://api.github.com/repos/adarsh1997shah/Image_Carousal',
+export const projectUrls = [
+	{ url: 'https://api.github.com/repos/adarsh1997shah/box-office' },
+	{ url: 'https://api.github.com/repos/adarsh1997shah/tic-tak-toe' },
+	{ url: 'https://api.github.com/repos/adarsh1997shah/e-shop' },
+	{ url: 'https://api.github.com/repos/adarsh1997shah/Metronome' },
 ];
 
 export function useProjects() {
