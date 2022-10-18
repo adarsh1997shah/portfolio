@@ -10,7 +10,10 @@ function Projects() {
 
 	return (
 		<Stack as="section" className="projects" flexDirection="column" mb="16" gap="8">
-			<Heading size="2xl" color={COLOR.subHeading} variant="section">
+			<Heading
+				size={{ base: 'xl', md: '2xl' }}
+				color={COLOR.subHeading}
+				variant="section">
 				Projects I'm proud of
 			</Heading>
 

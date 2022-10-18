@@ -14,7 +14,10 @@ export default function Contact() {
 
 	return (
 		<Stack as="section" className="contact" gap={{ base: '3', md: '5' }} mb="24">
-			<Heading size="2xl" color={COLOR.subHeading} variant="section">
+			<Heading
+				size={{ base: 'xl', md: '2xl' }}
+				color={COLOR.subHeading}
+				variant="section">
 				Contact
 			</Heading>
 
