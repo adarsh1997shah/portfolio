@@ -4,7 +4,7 @@ import { socialLinks } from '../common/components/Navbar';
 
 function Footer() {
 	return (
-		<Box backgroundColor="chakra-footer-bg">
+		<Box className="footer" backgroundColor="chakra-footer-bg">
 			<Container py="6">
 				<Flex
 					display="flex"

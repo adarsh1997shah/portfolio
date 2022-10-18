@@ -10,7 +10,7 @@ function App() {
 	return (
 		<>
 			<Navbar />
-			<Container mb="16">
+			<Container mb={{ xl: '32' }}>
 				<Box className="content">
 					<About />
 					<Projects />
