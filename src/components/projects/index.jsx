@@ -1,13 +1,12 @@
 import React from 'react';
-import { Button, Heading, HStack, Stack, Text } from '@chakra-ui/react';
+import { Heading, HStack, Link, Spinner, Stack, Text } from '@chakra-ui/react';
 import { useProjects } from './query';
 import COLOR from '../../common/constants/colors';
 import Project from './Project';
-import { RepeatIcon, WarningTwoIcon } from '@chakra-ui/icons';
+import Retry from './Retry';
 
 function Projects() {
-	const { data: projects, refetch, isLoading } = useProjects();
-	console.log(projects);
+	const { data: projects, refetch, isLoading, error } = useProjects();
 
 	return (
 		<Stack as="section" className="projects" flexDirection="column" mb="16" gap="8">
@@ -21,22 +20,23 @@ function Projects() {
 				))
 			) : (
 				<HStack minHeight="32" justifyContent="center">
-					{!isLoading && (
-						<Text display="flex" alignItems="center" gap="1.5">
-							<WarningTwoIcon color="red.500" /> Opps! Something went wrong. Please try
-							refresing{' '}
-							<Button
-								variant="ghost"
-								height="fit-content"
-								p="0"
-								minWidth="3"
-								colorScheme="white"
-								type="button"
-								onClick={refetch}>
-								<RepeatIcon color="blue.500" />
-							</Button>
+					{isLoading && <Spinner />}
+
+					{projects?.length === 0 && (
+						<Text>
+							You don't have any projects to showcase. Start adding now on{' '}
+							<Link
+								color={COLOR.projectLink}
+								href="https://github.com"
+								target="_blank"
+								textDecoration="underline">
+								GitHub
+							</Link>
+							.
 						</Text>
 					)}
+
+					{error && <Retry isLoading={isLoading} refetch={refetch} />}
 				</HStack>
 			)}
 		</Stack>
