@@ -13,7 +13,11 @@ export default function Contact() {
 	const isLottieVisible = useOnScreen(lottieRef);
 
 	return (
-		<Stack as="section" className="contact" gap={{ base: '3', md: '5' }} mb="24">
+		<Stack
+			as="section"
+			className="contact"
+			gap={{ base: '3', md: '5' }}
+			mb={{ base: '10', md: '24' }}>
 			<Heading
 				size={{ base: 'xl', md: '2xl' }}
 				color={COLOR.subHeading}

@@ -9,7 +9,12 @@ function Projects() {
 	const { data: projects, refetch, isLoading, error } = useProjects();
 
 	return (
-		<Stack as="section" className="projects" flexDirection="column" mb="16" gap="8">
+		<Stack
+			as="section"
+			className="projects"
+			flexDirection="column"
+			mb={{ md: '16' }}
+			gap={{ md: '8' }}>
 			<Heading
 				size={{ base: 'xl', md: '2xl' }}
 				color={COLOR.subHeading}
