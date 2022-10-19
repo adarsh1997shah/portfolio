@@ -40,7 +40,9 @@ export default function Contact() {
 							open. Whether for a potential project or just to say hi, I'll try my best to
 							answer your email.
 						</Text>
-						<Link variant="outline">Get in touch</Link>
+						<Link variant="outline" href="mailto:adarshshah01@gmail.com">
+							Say hello
+						</Link>
 					</SlideFade>
 				</Box>
 

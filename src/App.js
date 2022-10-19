@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Container } from '@chakra-ui/react';
 import Navbar from './common/components/Navbar';
-import About from './components/About';
+import About from './components/about';
 import Contact from './components/Contact';
 import Projects from './components/projects';
 import Footer from './components/Footer';
