@@ -12,7 +12,7 @@ function Retry({ isLoading, refetch }) {
 					gap="1.5"
 					flexDirection={{ base: 'column', md: 'row' }}>
 					<WarningTwoIcon color="red.500" />
-					<Box textAlign="center">
+					<Box as="span" textAlign="center">
 						Opps! Something went wrong. Please try refresing{' '}
 						<Button
 							variant="ghost"
