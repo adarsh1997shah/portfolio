@@ -1,5 +1,6 @@
 import React from 'react';
 import { Heading, HStack, Link, Spinner, Stack, Text } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import { useProjects } from './query';
 import COLOR from '../../common/constants/colors';
 import Project from './Project';
@@ -24,7 +25,13 @@ function Projects() {
 
 			{projects?.length > 0 ? (
 				projects?.map((project, index) => (
-					<Project key={project.id} project={project} index={index} />
+					<motion.ul
+						initial="offscreen"
+						whileInView="onscreen"
+						viewport={{ once: true, amount: 0.8 }}
+						key={project.id}>
+						<Project project={project} index={index} />
+					</motion.ul>
 				))
 			) : (
 				<HStack minHeight="32" justifyContent="center">
@@ -32,7 +39,7 @@ function Projects() {
 
 					{projects?.length === 0 && (
 						<Text>
-							You don't have any projects to showcase. Start adding now on{' '}
+							You currenlty don't have any projects to showcase. Start adding them now on{' '}
 							<Link
 								color={COLOR.projectLink}
 								href="https://github.com"

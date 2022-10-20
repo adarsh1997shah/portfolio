@@ -9,8 +9,10 @@ import {
 	Text,
 	Link,
 } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import { capitalizeFirstLetter, isOdd, replaceHiphenWithSpace } from '../../utils';
 import COLOR from '../../common/constants/colors';
+import { projectVariants } from './utils/animationVariants';
 
 function Project({ project, index }) {
 	const { description, name, topics, homepage } = project;
@@ -26,6 +28,8 @@ function Project({ project, index }) {
 							borderRadius="lg"
 						/>
 					}
+					as={motion.img}
+					variants={projectVariants(isOdd(index))}
 					display={{ base: 'none', md: 'block' }}
 					borderRadius="lg"
 					gridColumn={{ base: '1/-1', md: isOdd(index) ? '6/11' : '1/6' }}
@@ -38,13 +42,16 @@ function Project({ project, index }) {
 
 				<Box
 					className="text"
+					as={motion.div}
 					gridColumn={{ base: '1/-1', md: isOdd(index) ? '1/7' : '5/11' }}
 					gridRow="1/2"
 					zIndex="2"
-					textAlign={{ base: 'left', md: isOdd(index) ? 'left' : 'right' }}>
+					textAlign={{ base: 'left', md: isOdd(index) ? 'left' : 'right' }}
+					variants={projectVariants(!isOdd(index))}>
 					<Heading size="lg" color={COLOR.projectTitle}>
 						{capitalizeFirstLetter(replaceHiphenWithSpace(name))}
 					</Heading>
+
 					<Box p="4" my="4" borderRadius="base" bgColor="chakra-project-text-bg">
 						<Text>{description}</Text>
 						<Text>

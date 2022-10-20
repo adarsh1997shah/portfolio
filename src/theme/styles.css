@@ -9,6 +9,10 @@
 	--navBarHeight: 80px;
 }
 
+.ad-portfolio {
+	overflow: hidden;
+}
+
 .about .lottie-student {
 	width: 100%;
 	height: 100%;
