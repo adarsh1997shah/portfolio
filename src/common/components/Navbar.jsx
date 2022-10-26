@@ -21,20 +21,14 @@ import {
 	Container,
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon, HamburgerIcon, ChatIcon } from '@chakra-ui/icons';
-import { FaDesktop, FaGithub, FaLinkedin, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { FaDesktop } from 'react-icons/fa';
 import { transitionDuration, transitionWithDelay } from '../../utils/transition';
 import { classList } from '../../utils';
+import { socialApps } from '../constants/social';
 
 const navLinks = [
 	{ name: 'Projects', url: '#projects', icon: FaDesktop },
 	{ name: 'Contact', url: '#contact', icon: ChatIcon },
-];
-
-export const socialLinks = [
-	{ name: 'GitHub', icon: FaGithub, url: 'https://github.com/adarsh1997shah' },
-	{ name: 'LinkedIn', icon: FaLinkedin },
-	{ name: 'Twitter', icon: FaTwitter },
-	{ name: 'Instagram', icon: FaInstagram },
 ];
 
 const linkDelay = 0.3;
@@ -65,22 +59,11 @@ function Links({ onClose = () => {}, isMobile = false }) {
 }
 
 function SocialLinks({ onClose, isMobile }) {
-	const duration = isMobile ? 0 : transitionDuration;
-
-	return socialLinks.map(({ name, url, icon: LinkIcon }, index) => {
-		const transitionDelay = isMobile ? 0 : index * linkDelay + totalLinkDelay;
-
+	return socialApps.map(({ name, url, icon: LinkIcon }, index) => {
 		return (
-			<SlideFade
-				key={name}
-				offsetY="-10px"
-				transition={transitionWithDelay({ delay: transitionDelay, duration })}
-				whileInView="enter"
-				viewport={{ once: true }}>
-				<Link href={url} color="chakra-nav-link" onClick={onClose}>
-					<Icon as={LinkIcon} verticalAlign="middle" mr="2" /> {isMobile && name}
-				</Link>
-			</SlideFade>
+			<Link href={url} color="chakra-nav-link" onClick={onClose} isExternal>
+				<Icon as={LinkIcon} verticalAlign="middle" mr="2" /> {isMobile && name}
+			</Link>
 		);
 	});
 }
