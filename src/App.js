@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Box, Container } from '@chakra-ui/react';
-import Navbar from './common/components/Navbar';
+import Navbar from './common/components/navbar';
 import About from './components/about';
 import Contact from './components/Contact';
 import Projects from './components/projects';
