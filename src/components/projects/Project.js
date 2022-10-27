@@ -15,7 +15,7 @@ import COLOR from '../../common/constants/colors';
 import { projectVariants } from './utils/animationVariants';
 
 function Project({ project, index }) {
-	const { description, name, topics, homepage } = project;
+	const { description, name, topics, homepage, thumbnail } = project;
 
 	return (
 		<Box className="projects-wrapper">
@@ -35,7 +35,7 @@ function Project({ project, index }) {
 					gridColumn={{ base: '1/-1', md: isOdd(index) ? '6/11' : '1/6' }}
 					objectFit="cover"
 					w="100%"
-					src="https://assets.codepen.io/296057/fem-gettingstartedcss-ch5-1.png"
+					src={thumbnail}
 					gridRow="1/2"
 					boxShadow="md"
 				/>
