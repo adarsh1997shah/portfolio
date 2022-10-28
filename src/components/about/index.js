@@ -1,10 +1,12 @@
 import React, { useRef } from 'react';
 import Lottie from 'react-lottie-player';
 import { Box, Heading, HStack, Link, Text } from '@chakra-ui/react';
-import useOnScreen from '../../common/hooks/useOnScreen';
+
 import Slide from './Slide';
 
 import student from '../../static/lottie/student.json';
+
+import useOnScreen from '../../common/hooks/useOnScreen';
 import COLOR from '../../common/constants/colors';
 
 const mainDelay = 0.1;
@@ -15,7 +17,7 @@ function About() {
 	const isLottieVisible = useOnScreen(lottieRef);
 
 	return (
-		<HStack as="section" className="about" minH="100vh">
+		<HStack as="section" id="about" minH="100vh">
 			<Box flex="1">
 				<Slide delay={mainDelay + 0.1}>
 					<Text as="div">

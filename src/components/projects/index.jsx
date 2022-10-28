@@ -1,10 +1,12 @@
 import React from 'react';
 import { Heading, HStack, Link, Spinner, Stack, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
+
 import { useProjects } from './query';
-import COLOR from '../../common/constants/colors';
 import Project from './Project';
 import Retry from './Retry';
+
+import COLOR from '../../common/constants/colors';
 
 function Projects() {
 	const { data: projects, refetch, isLoading, error } = useProjects();
@@ -12,7 +14,7 @@ function Projects() {
 	return (
 		<Stack
 			as="section"
-			className="projects"
+			id="projects"
 			flexDirection="column"
 			mb={{ md: '16' }}
 			gap={{ md: '8' }}>

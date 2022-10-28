@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import { Box, Heading, Link, SlideFade, Stack, Text } from '@chakra-ui/react';
 import Lottie from 'react-lottie-player';
-import { easeInOut, transitionWithDelay } from '../utils/transition';
 
+import { easeInOut, transitionWithDelay } from '../utils/transition';
 import watchMovieWithPopcorn from '../static/lottie/watch-a-movie-with-popcorn.json';
 import useOnScreen from '../common/hooks/useOnScreen';
 import COLOR from '../common/constants/colors';
@@ -15,7 +15,7 @@ export default function Contact() {
 	return (
 		<Stack
 			as="section"
-			className="contact"
+			id="contact"
 			gap={{ base: '3', md: '5' }}
 			mb={{ base: '10', md: '24' }}>
 			<Heading

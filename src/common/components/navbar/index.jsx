@@ -7,14 +7,19 @@ import {
 	useTheme,
 	useMediaQuery,
 	Container,
+	Link,
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { classList } from '../../../utils';
+import { Link as ScrollLink } from 'react-scroll';
 import { motion } from 'framer-motion';
-import { navItem, navWrapper } from './utils/animationVariants';
+
 import Links, { navLinks } from './Links';
 import Slider from './Slider';
+
+import { classList } from '../../../utils';
+import { navItem, navWrapper } from './utils/animationVariants';
 import { DEFAULT_DElAY } from '../../constants/delay';
+import { DURATION, OFFSET } from '../../constants/linkScroll';
 
 function Navbar() {
 	const [showNavbarOnScroll, setShowNavbarOnScroll] = useState(false);
@@ -77,7 +82,14 @@ function Navbar() {
 					fontFamily="signature"
 					fontWeight="light"
 					fontSize={{ base: '4xl', md: '5xl' }}>
-					{`<Adarsh Shah />`}
+					<Link
+						to="about"
+						as={ScrollLink}
+						className="nav-links"
+						spy={true}
+						smooth={true}
+						offset={OFFSET}
+						duration={DURATION}>{`<Adarsh Shah />`}</Link>
 				</Heading>
 
 				<HStack as={motion.div} variants={navItem}>
